@@ -11,16 +11,14 @@ function getItem(label:string, link?:string) : ItemType {
 }
 
 function SideMenu() {
-    const homePageItem = getItem("首页");
     const funcOneItem = getItem("功能一");
 
     return (
         <Sider>
             <Menu
-                onClick={console.log}
                 theme="dark"
                 mode="inline"
-                items={[homePageItem, funcOneItem]}
+                items={[funcOneItem]}
             />
         </Sider>
     )

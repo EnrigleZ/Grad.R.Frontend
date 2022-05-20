@@ -14,3 +14,30 @@ body {
 .layout {
     height: 100%;
 }
+
+.header-text {
+    color: #eeeeee;
+    float: left;
+    font-size: 20px;
+}
+
+.page-outer-container {
+    padding: 40px 40px 200px 40px;
+    height: 100%;
+}
+
+.page-container {
+    height: 100%;
+}
+
+.page-1 .right-content {
+    height: 400px;
+    background-color: #fff;
+    color: red;
+    padding: 30px 10px;
+    font-size: 18px;
+}
+
+.page-1 .page-1-divider {
+    margin: 40px 0;
+}
