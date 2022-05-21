@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import { Route, Routes } from "react-router-dom";
 import PageOne from "../page/page-one/page-one";
+import PageTwo from "../page/page-two/page-two";
 import SideMenu from "./side-menu";
 
 const { Header, Content } = Layout;
@@ -18,6 +19,8 @@ function MainLayout() {
                         <div className="page-container">
                             <Routes>
                                 <Route path="/" element={<PageOne />} />
+                                <Route path="/one" element={<PageOne />} />
+                                <Route path="/two" element={<PageTwo />} />
                             </Routes>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ const DATE_FIELD = "date";
 const VALUE_FIELD = "value";
 const STREET_FIELD = "street";
 
-const SEOI_MODEL = "SEOI";
+const SEOI_MODEL = "SEOI-TSG";
 
 const MODEL_DATA_MAP: any = {
     [SEOI_MODEL]: seoiPredicted,

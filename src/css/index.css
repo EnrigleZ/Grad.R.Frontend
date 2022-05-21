@@ -41,3 +41,13 @@ body {
 .page-1 .page-1-divider {
     margin: 40px 0;
 }
+
+.grey {
+    font-style: italic;
+    color: #888;
+}
+
+.exp-label {
+    margin-right: 10px;
+    color: #555;
+}
