@@ -1,7 +1,7 @@
 import { Line } from "@ant-design/charts";
 import { Card, Divider, Select, Slider } from "antd";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { DATE_HEADERS, EXPERIMENTS } from "./constant";
+import { DATE_HEADERS, EXPERIMENTS, FIXED_DATA } from "./constant";
 
 const experimentSelectors = EXPERIMENTS.map(({label}) =>
     (<Select.Option key={label}>{label}</Select.Option>));
@@ -28,8 +28,10 @@ function FunctionArea() {
             return;
         }
         const info = EXPERIMENTS.filter(x => x.label === experiment)[0];
-
-        setData(info.data.filter(x => x.value === value)[0].data.map((v, i) => ({v, date: DATE_HEADERS[i]})));
+        const dataOfCurrentParam = info.data
+            .filter(x => x.value === value)[0].data
+            .map((v, i) => ({v, date: DATE_HEADERS[i], type: `${experiment}:${value}`}));
+        setData([...FIXED_DATA, ...dataOfCurrentParam]);
     }, [value]);
 
     return <div>
@@ -40,6 +42,7 @@ function FunctionArea() {
             data={data}
             xField="date"
             yField="v"
+            seriesField="type"
             yAxis={{
                 maxLimit: 80000
             }}

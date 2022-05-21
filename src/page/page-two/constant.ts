@@ -14,7 +14,7 @@ export const EXPERIMENTS = [
         data: confirmlenData,
     },
     {
-        label: "提前封城",
+        label: "封城日期",
         data: dayData,
     },
     {
@@ -24,3 +24,6 @@ export const EXPERIMENTS = [
 ];
 
 export const DATE_HEADERS = headerData;
+
+export const FIXED_LABEL = "参考变化曲线";
+export const FIXED_DATA = dayData[0].data.map((v, i) => ({v, date: DATE_HEADERS[i], type: FIXED_LABEL }));
