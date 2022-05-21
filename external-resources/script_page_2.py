@@ -5,7 +5,7 @@ def read_csv(filename):
     with open(filename, encoding='utf-8') as file:
         header = file.readline().strip().split(',')[1:]
         data = file.readline().strip().split(',')[1:]
-        data = [float(x) for x in data]
+        data = [int(float(x)) for x in data]
 
     assert len(header) == len(data)
     return header, data

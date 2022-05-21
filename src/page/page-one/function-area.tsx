@@ -22,6 +22,8 @@ const SEOI_S_MODEL = "SEOI-S";
 const SEOI_G_MODEL = "SEOI-G";
 const SEOI_TSG_MODEL = "SEOI-TSG";
 
+const REAL_DATA_LABEL = "真实数据";
+
 const MODEL_DATA_MAP: any = {
     [SEOI_MODEL]: seoiPredicted,
     [SEOI_T_MODEL]: seoiTPredicted,
@@ -38,10 +40,10 @@ function generateChartData(row: number[], street: string) {
     }))
 }
 
-const REAL_DATA_CHART_DATA = generateChartData(realData[0], "真实数据");
+const REAL_DATA_CHART_DATA = generateChartData(realData[0], REAL_DATA_LABEL);
 
 const STREET_SELECTORS = streetInfo.map(item =>
-    (<Select.Option key={item.id}>{item.name}</Select.Option>));
+    (<Select.Option value={item.id} key={item.id}>{item.name}</Select.Option>));
 
 const MODEL_SELECTORS = [SEOI_TSG_MODEL, SEOI_MODEL, SEOI_T_MODEL, SEOI_S_MODEL, SEOI_G_MODEL]
     .map(item => (<Select.Option key={item}>{item}</Select.Option>));
@@ -66,11 +68,13 @@ function FunctionArea() {
     }, []);
 
     React.useEffect(() => {
+        const realStreetData = generateChartData(realData[streetIndex], REAL_DATA_LABEL);
         if (streetIndex < predict.length) {
             const predictedData = generateChartData(predict[streetIndex], `${model}预测结果`);
-            const realStreetData = generateChartData(realData[streetIndex], "真实数据");
 
             setData([...realStreetData, ...predictedData])
+        } else {
+            setData(realStreetData)
         }
     }, [streetIndex, model, predict]);
 
@@ -86,16 +90,19 @@ function FunctionArea() {
                     duration: 1000,
                 },
             }}
+            color={line => {
+                return line.street === REAL_DATA_LABEL ? "#ffbb96" : "#5cdbd3";
+            }}
         />
         <Divider className='page-1-divider' />
         <Form>
             <Form.Item label="模型选择">
-                <Select onChange={onModelChange} placement="bottomLeft">
+                <Select onChange={onModelChange} value={model} placement="bottomLeft">
                     {MODEL_SELECTORS}
                 </Select>
             </Form.Item>
             <Form.Item label="区域选择">
-                <Select onChange={onStreetIndexChange} placement="bottomLeft">
+                <Select onChange={onStreetIndexChange} value={streetIndex} placement="bottomLeft">
                     {STREET_SELECTORS}
                 </Select>
             </Form.Item>

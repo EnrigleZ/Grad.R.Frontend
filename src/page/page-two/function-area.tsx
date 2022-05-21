@@ -1,7 +1,7 @@
 import { Line } from "@ant-design/charts";
 import { Card, Divider, Select, Slider } from "antd";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { DATE_HEADERS, EXPERIMENTS, FIXED_DATA } from "./constant";
+import { DATE_HEADERS, EXPERIMENTS, FIXED_DATA, FIXED_LABEL } from "./constant";
 
 const experimentSelectors = EXPERIMENTS.map(({label}) =>
     (<Select.Option key={label}>{label}</Select.Option>));
@@ -43,6 +43,9 @@ function FunctionArea() {
             xField="date"
             yField="v"
             seriesField="type"
+            color={line => {
+                return line.type === FIXED_LABEL ? "#ffbb96" : "#5cdbd3";
+            }}
         />
         <Divider>
             <span className="grey">参数调节</span>
