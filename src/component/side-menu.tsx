@@ -12,8 +12,8 @@ function getItem(label:string, link?:string) : ItemType {
 }
 
 function SideMenu() {
-    const funcOneItem = getItem("功能一", "one");
-    const funcTwoItem = getItem("功能二", "two");
+    const funcOneItem = getItem("传染病传播网络预测实验", "one");
+    const funcTwoItem = getItem("疫情防控措施模拟实验", "two");
 
     return (
         <Sider>

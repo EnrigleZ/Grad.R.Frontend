@@ -30,11 +30,11 @@ body {
     height: 100%;
 }
 
-.page-1 .right-content {
+.right-content {
     height: 400px;
     background-color: #fff;
-    color: red;
-    padding: 30px 10px;
+    color: #333;
+    padding: 50px 20px;
     font-size: 18px;
 }
 

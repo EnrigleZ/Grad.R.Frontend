@@ -10,7 +10,7 @@ function MainLayout() {
     return (
         <Layout className="layout">
             <Header>
-                <span className="header-text">毕业设计</span>
+                <span className="header-text">城市场景传染病传播网络推断模型</span>
             </Header>
             <Layout>
                 <SideMenu />
