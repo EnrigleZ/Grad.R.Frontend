@@ -43,9 +43,6 @@ function FunctionArea() {
             xField="date"
             yField="v"
             seriesField="type"
-            yAxis={{
-                maxLimit: 80000
-            }}
         />
         <Divider>
             <span className="grey">参数调节</span>
