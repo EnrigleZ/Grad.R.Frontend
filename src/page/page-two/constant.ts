@@ -10,7 +10,7 @@ export const EXPERIMENTS = [
         data: trafficData
     },
     {
-        label: "确诊速度",
+        label: "确诊时长",
         data: confirmlenData,
     },
     {
@@ -26,4 +26,5 @@ export const EXPERIMENTS = [
 export const DATE_HEADERS = headerData;
 
 export const FIXED_LABEL = "参考变化曲线";
-export const FIXED_DATA = dayData[0].data.map((v, i) => ({v, date: DATE_HEADERS[i], type: FIXED_LABEL }));
+export const FIXED_DATA = dayData.filter(x => x.value === 0.0)[0]
+    .data.map((v, i) => ({v, date: DATE_HEADERS[i], type: FIXED_LABEL }));

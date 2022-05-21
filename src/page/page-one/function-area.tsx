@@ -5,16 +5,29 @@ import dateHeader from '../../static/page-1/date.json';
 import streetInfo from '../../static/page-1/street-info.json';
 import realData from '../../static/page-1/real.json';
 import seoiPredicted from '../../static/page-1/seoi-predicted.json';
+import seoiTPredicted from '../../static/page-1/seoi-t-predicted.json';
+import seoiSPredicted from '../../static/page-1/seoi-s-predicted.json';
+import seoiGPredicted from '../../static/page-1/seoi-g-predicted.json';
+import seoiTSGPredicted from '../../static/page-1/seoi-tsg-predicted.json';
+
 import { Divider, Form, Select } from 'antd';
 
 const DATE_FIELD = "date";
 const VALUE_FIELD = "value";
 const STREET_FIELD = "street";
 
-const SEOI_MODEL = "SEOI-TSG";
+const SEOI_MODEL = "SEOI";
+const SEOI_T_MODEL = "SEOI-T";
+const SEOI_S_MODEL = "SEOI-S";
+const SEOI_G_MODEL = "SEOI-G";
+const SEOI_TSG_MODEL = "SEOI-TSG";
 
 const MODEL_DATA_MAP: any = {
     [SEOI_MODEL]: seoiPredicted,
+    [SEOI_T_MODEL]: seoiTPredicted,
+    [SEOI_S_MODEL]: seoiSPredicted,
+    [SEOI_G_MODEL]: seoiGPredicted,
+    [SEOI_TSG_MODEL]: seoiTSGPredicted,
 }
 
 function generateChartData(row: number[], street: string) {
@@ -30,8 +43,8 @@ const REAL_DATA_CHART_DATA = generateChartData(realData[0], "真实数据");
 const STREET_SELECTORS = streetInfo.map(item =>
     (<Select.Option key={item.id}>{item.name}</Select.Option>));
 
-const MODEL_SELECTORS = [SEOI_MODEL].map(item =>
-    (<Select.Option key={item}>{item}</Select.Option>));
+const MODEL_SELECTORS = [SEOI_TSG_MODEL, SEOI_MODEL, SEOI_T_MODEL, SEOI_S_MODEL, SEOI_G_MODEL]
+    .map(item => (<Select.Option key={item}>{item}</Select.Option>));
 
 function FunctionArea() {
     // const predicted = generateChartData(seoiPredicted[0], "SEOI预测结果");
